@@ -34,7 +34,7 @@ function test(states) {
                 countstates++;
             } 
       }
-      if (countstates < 8) setTimeout(function () { test(states); }, 2000); 
+      if (contadorEstados < 8) setTimeout(function () { test(states); }, 2000); 
 }
 
 var states = ["A","DIRTY","DIRTY"];
