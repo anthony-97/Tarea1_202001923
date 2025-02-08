@@ -9,8 +9,8 @@ function test(states) {
        var location = states[0];		
        var state = states[0] == "A" ? states[1] : states[2];
        var action_result = reflex_agent(location, state);
-       document.getElementById("log").innerHTML+="<br>Habitación: ".concat(location).concat(" | Acción: ").concat(action_result);
-       if (action_result == "CLEAN"){
+       document.getElementById("log").innerHTML+="<br>Habitación: ".concat(location).concat(" | Acción: ").concat(action_result).concat(" | Estado: ").concat(states[1]).concat(" ").concat(states[2]);
+       if (action_result == "CLEAN") {
 			if (location == "A") {
 				states[1] = "CLEAN";
 				contadorEstados++;
@@ -19,22 +19,21 @@ function test(states) {
 				contadorEstados++;
 			}
        } else {
-            if (states[0] == "A" && states[1] == "CLEAN" && states[2] == "CLEAN"){
+            if (states[0] == "A" && states[1] == "CLEAN" && states[2] == "CLEAN") {
                 states[0] = "B";
                 states[1] = "DIRTY";
                 states[2] = "DIRTY";
                 contadorEstados++;
-            }
-            else if (action_result == "RIGHT"){
+            } else if (action_result == "RIGHT") {
                 states[0] = "B";
                 contadorEstados++;
-            } 
-            else if (action_result == "LEFT"){
+            } else if (action_result == "LEFT") {
                 states[0] = "A";
-                countstates++;
+                contadorEstados++;
             } 
       }
-      if (contadorEstados < 8) setTimeout(function () { test(states); }, 2000); 
+	  //document.getElementById("log").innerHTML+="".concat(action_result).concat(" | Estado: ").concat(states[1]).concat(" ").concat(states[2]); 
+      if (contadorEstados < 9) setTimeout(function () { test(states); }, 2000); 
 }
 
 var states = ["A","DIRTY","DIRTY"];
